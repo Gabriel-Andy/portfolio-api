@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/jobs": {
+    "/projects": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Job"
+                    "$ref": "#/components/schemas/Project"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Job"
+          "Project"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Job"
+                  "$ref": "#/components/schemas/Project"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Job"
+          "Project"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewJob"
+                "$ref": "#/components/schemas/NewProject"
               }
             }
           }
         }
       }
     },
-    "/jobs/count": {
+    "/projects/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Job"
+          "Project"
         ],
         "parameters": []
       }
     },
-    "/jobs/{id}": {
+    "/projects/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Job"
+                  "$ref": "#/components/schemas/Project"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Job"
+          "Project"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Job"
+                  "$ref": "#/components/schemas/Project"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Job"
+          "Project"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewJob"
+                "$ref": "#/components/schemas/NewProject"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Job"
+          "Project"
         ],
         "parameters": [
           {
@@ -514,27 +514,105 @@
   },
   "components": {
     "schemas": {
-      "Job": {
+      "Project": {
         "required": [
           "id",
-          "company",
-          "position",
-          "date"
+          "title",
+          "description",
+          "image",
+          "github",
+          "url",
+          "featured",
+          "stack"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "company": {
+          "title": {
             "type": "string"
           },
-          "position": {
+          "description": {
             "type": "string"
           },
-          "date": {
+          "image": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "github": {
             "type": "string"
           },
-          "desc": {
+          "url": {
+            "type": "string"
+          },
+          "featured": {
+            "type": "boolean",
+            "default": false
+          },
+          "stack": {
             "type": "array",
             "items": {
               "type": "object",
@@ -642,23 +720,33 @@
           }
         }
       },
-      "NewJob": {
+      "NewProject": {
         "required": [
-          "company",
-          "position",
-          "date"
+          "title",
+          "description",
+          "github",
+          "url",
+          "featured",
+          "stack"
         ],
         "properties": {
-          "company": {
+          "title": {
             "type": "string"
           },
-          "position": {
+          "description": {
             "type": "string"
           },
-          "date": {
+          "github": {
             "type": "string"
           },
-          "desc": {
+          "url": {
+            "type": "string"
+          },
+          "featured": {
+            "type": "boolean",
+            "default": false
+          },
+          "stack": {
             "type": "array",
             "items": {
               "type": "object",
@@ -688,7 +776,7 @@
   },
   "tags": [
     {
-      "name": "Job"
+      "name": "Project"
     }
   ]
 }

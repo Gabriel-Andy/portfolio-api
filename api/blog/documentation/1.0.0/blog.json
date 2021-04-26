@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/jobs": {
+    "/blogs": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Job"
+                    "$ref": "#/components/schemas/Blog"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Job"
+          "Blog"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Job"
+                  "$ref": "#/components/schemas/Blog"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Job"
+          "Blog"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewJob"
+                "$ref": "#/components/schemas/NewBlog"
               }
             }
           }
         }
       }
     },
-    "/jobs/count": {
+    "/blogs/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Job"
+          "Blog"
         ],
         "parameters": []
       }
     },
-    "/jobs/{id}": {
+    "/blogs/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Job"
+                  "$ref": "#/components/schemas/Blog"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Job"
+          "Blog"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Job"
+                  "$ref": "#/components/schemas/Blog"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Job"
+          "Blog"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewJob"
+                "$ref": "#/components/schemas/NewBlog"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Job"
+          "Blog"
         ],
         "parameters": [
           {
@@ -514,43 +514,109 @@
   },
   "components": {
     "schemas": {
-      "Job": {
+      "Blog": {
         "required": [
           "id",
-          "company",
-          "position",
-          "date"
+          "title",
+          "content",
+          "image",
+          "category",
+          "description"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "company": {
+          "title": {
             "type": "string"
           },
-          "position": {
+          "content": {
+            "type": "string"
+          },
+          "image": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "slug": {
+            "type": "uid"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "react",
+              "gatsby",
+              "javasscript",
+              "html"
+            ]
+          },
+          "description": {
             "type": "string"
           },
           "date": {
             "type": "string"
-          },
-          "desc": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id",
-                "title"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                }
-              }
-            }
           },
           "created_by": {
             "required": [
@@ -642,39 +708,37 @@
           }
         }
       },
-      "NewJob": {
+      "NewBlog": {
         "required": [
-          "company",
-          "position",
-          "date"
+          "title",
+          "content",
+          "category",
+          "description"
         ],
         "properties": {
-          "company": {
+          "title": {
             "type": "string"
           },
-          "position": {
+          "content": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "uid"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "react",
+              "gatsby",
+              "javasscript",
+              "html"
+            ]
+          },
+          "description": {
             "type": "string"
           },
           "date": {
             "type": "string"
-          },
-          "desc": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id",
-                "title"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "title": {
-                  "type": "string"
-                }
-              }
-            }
           },
           "created_by": {
             "type": "string"
@@ -688,7 +752,7 @@
   },
   "tags": [
     {
-      "name": "Job"
+      "name": "Blog"
     }
   ]
 }
