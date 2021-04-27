@@ -48,6 +48,21 @@
     },
     "date": {
       "type": "date"
+    },
+    "introduction": {
+      "type": "component",
+      "repeatable": true,
+      "component": "description-introduction.introduction"
+    },
+    "body": {
+      "type": "component",
+      "repeatable": true,
+      "component": "description-body.body"
+    },
+    "conclusion": {
+      "type": "component",
+      "repeatable": true,
+      "component": "description-conclusion.conclusion"
     }
   }
 }

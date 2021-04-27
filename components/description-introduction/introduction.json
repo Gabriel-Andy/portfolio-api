@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_description_introduction_introductions",
+  "info": {
+    "name": "introduction",
+    "icon": "arrow-circle-right"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "titleImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

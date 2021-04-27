@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_description_conclusion_conclusions",
+  "info": {
+    "name": "conclusion",
+    "icon": "arrow-down"
+  },
+  "options": {},
+  "attributes": {
+    "shareLinks": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
